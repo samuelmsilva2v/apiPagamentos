@@ -2,8 +2,10 @@ package com.example.demo.domain.models.entities;
 
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -16,8 +18,11 @@ public class Usuario {
 	private UUID id;
 	
 	private String nome;
+	private String telefone;
 	private String email;
+	private String senha;
 	
-	// TODO private Conta conta;
+	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private Conta conta;
 	
 }
